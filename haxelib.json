@@ -1,0 +1,14 @@
+{
+  "name": "simplegui",
+  "url": "https://github.com/jasonsturges/simplegui-openfl",
+  "license": "MIT",
+  "tags": ["openfl"],
+  "description": "OpenFL port of SimpleGUI by Justin Windle",
+  "version": "0.9.0",
+  "releasenote": "Alpha release",
+  "contributors": ["jasonsturges"],
+  "dependencies": {
+    "openfl": "",
+    "minimalcomps": ""
+  }
+}

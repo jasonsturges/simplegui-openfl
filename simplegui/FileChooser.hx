@@ -81,7 +81,7 @@ class FileChooser extends Component {
         _button.x = w - _button.width;
         _filePath.width = w - _button.width - 5;
 
-        return super.width;
+        #if !flash return super.width; #end
     }
 
     /**

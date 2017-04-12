@@ -65,6 +65,7 @@ class SimpleGUI extends EventDispatcher {
     private static inline var PADDING:Int = 4;
     private static inline var MARGIN:Int = 1;
 
+
     //	----------------------------------------------------------------
     //	PRIVATE MEMBERS
     //	----------------------------------------------------------------
@@ -92,6 +93,7 @@ class SimpleGUI extends EventDispatcher {
     private var _hidden:Bool;
 
     private var _showToggle:Bool = true;
+
 
     //	----------------------------------------------------------------
     //	CONSTRUCTOR
@@ -130,6 +132,7 @@ class SimpleGUI extends EventDispatcher {
         hide();
     }
 
+
     //	----------------------------------------------------------------
     //	PUBLIC METHODS
     //	----------------------------------------------------------------
@@ -164,7 +167,6 @@ class SimpleGUI extends EventDispatcher {
      * Populates the system clipboard with Actionscript code, setting all
      * controlled properties to their current values
      */
-
     public function save():Void {
         var path:String;
         var prop:Dynamic;
@@ -205,12 +207,10 @@ class SimpleGUI extends EventDispatcher {
      * @param type The class definition of the component to add
      * @param options The options to configure the component with
      */
-
     public function addControl<T>(type:Class<T>, options:Dynamic):Component {
         var component:Component = cast Type.createInstance(type, []);
 
         // apply settings
-
         for (option in Reflect.fields(options)) {
             if(option == "callback")
                 continue;
@@ -268,7 +268,6 @@ class SimpleGUI extends EventDispatcher {
      *
      * @param title An optional title to display at the top of the column
      */
-
     public function addColumn(title:String = null):Void {
         _column = new Sprite();
         _container.addChild(_column);
@@ -281,7 +280,6 @@ class SimpleGUI extends EventDispatcher {
      *
      * @param title An optional title to display at the top of the group
      */
-
     public function addGroup(title:String = null):Void {
         if (_group != null && _group.numChildren == 0) {
             _group.parent.removeChild(_group);
@@ -300,7 +298,6 @@ class SimpleGUI extends EventDispatcher {
      *
      * @param text The text content of the label
      */
-
     public function addLabel(text:String):Label {
         return cast addControl(Label, {text : text.toUpperCase()}); // as Label
     }
@@ -316,7 +313,6 @@ class SimpleGUI extends EventDispatcher {
      * it will be used as the control's label, though it is recommended that
      * you instead pass the label as a property within the options object
      */
-
     public function addToggle(target:String, options:Dynamic = null):CheckBox {
         options = parseOptions(target, options);
 
@@ -350,7 +346,6 @@ class SimpleGUI extends EventDispatcher {
      * it will be used as the control's label, though it is recommended that
      * you instead pass the label as a property within the options object
      */
-
     public function addSlider(target:String, minimum:Float, maximum:Float, options:Dynamic = null):HUISlider {
         options = parseOptions(target, options);
 
@@ -377,7 +372,6 @@ class SimpleGUI extends EventDispatcher {
      * it will be used as the control's label, though it is recommended that
      * you instead pass the label as a property within the options object
      */
-
     public function addRange(target1:String, target2:String, minimum:Float, maximum:Float, options:Dynamic = null):HUIRangeSlider {
         var target:Array<String> = [target1, target2];
 
@@ -405,7 +399,6 @@ class SimpleGUI extends EventDispatcher {
      * it will be used as the control's label, though it is recommended that
      * you instead pass the label as a property within the options object
      */
-
     public function addStepper(target:String, minimum:Float, maximum:Float, options:Dynamic = null):NumericStepper {
         options = parseOptions(target, options);
 
@@ -429,7 +422,6 @@ class SimpleGUI extends EventDispatcher {
      * it will be used as the control's label, though it is recommended that
      * you instead pass the label as a property within the options object
      */
-
     public function addColour(target:String, options:Dynamic = null):ColorChooser {
         options = parseOptions(target, options);
 
@@ -455,7 +447,6 @@ class SimpleGUI extends EventDispatcher {
      * you instead pass the label as a property within the options object
      */
     // TODO: There is no StyledCombo defined in SimpleGUI or MinimalComps.
-
     public function addComboBox(target:String, items:Array<Dynamic>, options:Dynamic = null):ComboBox {
         options = parseOptions(target, options);
 
@@ -486,7 +477,6 @@ class SimpleGUI extends EventDispatcher {
      * it will be used as the control's label, though it is recommended that
      * you instead pass the label as a property within the options object
      */
-
     public function addFileChooser(label:String, file:FileReference, onComplete:Dynamic, filter:Array<String> = null, options:Dynamic = null):FileChooser {
         options = parseOptions(label, options);
 
@@ -514,7 +504,6 @@ class SimpleGUI extends EventDispatcher {
      * it will be used as the control's label, though it is recommended that
      * you instead pass the label as a property within the options object
      */
-
     public function addSaveButton(label:String = "Save", options:Dynamic = null):PushButton {
         addGroup("Save Current Settings (S)");
 
@@ -528,6 +517,7 @@ class SimpleGUI extends EventDispatcher {
         button.addEventListener(MouseEvent.CLICK, onSaveButtonClicked);
         return button;
     }
+
 
     //	----------------------------------------------------------------
     //	PRIVATE METHODS
@@ -939,6 +929,7 @@ class SimpleGUI extends EventDispatcher {
             _message.text = '';
         }
     }
+
 
     //	----------------------------------------------------------------
     //	PUBLIC ACCESSORS

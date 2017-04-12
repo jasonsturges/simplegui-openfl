@@ -804,7 +804,10 @@ class SimpleGUI extends EventDispatcher {
 
         if (Std.is(options, String)) {
             return {label: options};
-        } else if (Reflect.hasField(options, "label")) {
+        } else if (Reflect.isObject(options)) {
+            if (!Reflect.hasField(options, "label")) {
+                options.label = propToLabel(target);
+            }
             return options;
         } else {
             return {label: propToLabel(target)};

@@ -354,8 +354,7 @@ class SimpleGUI extends EventDispatcher {
 
         var params:Dynamic = {};
 
-        // TODO: HUISlider has no `target` property
-        //params.target = target;
+        params.target = target;
         params.minimum = minimum;
         params.maximum = maximum;
 

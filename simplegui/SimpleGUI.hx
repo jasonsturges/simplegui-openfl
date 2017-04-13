@@ -28,6 +28,7 @@ import minimalcomps.components.NumericStepper;
 import minimalcomps.components.PushButton;
 import minimalcomps.components.RangeSlider;
 import minimalcomps.components.Style;
+import minimalcomps.components.UISlider;
 
 import openfl.display.Bitmap;
 import openfl.display.BitmapData;
@@ -619,19 +620,23 @@ class SimpleGUI extends EventDispatcher {
 
                 if (Std.is(component, CheckBox)) {
                     var checkBox:CheckBox = cast component;
-                    target[prop] = checkBox.selected;
+                    Reflect.setProperty(target, prop, checkBox.selected);
                 }
                 else if (Std.is(component, RangeSlider)) {
                     var rangeSlider:RangeSlider = cast component;
-                    target[prop] = (i == 0) ? rangeSlider.lowValue : rangeSlider.highValue;
+                    Reflect.setProperty(target, prop, (i == 0) ? rangeSlider.lowValue : rangeSlider.highValue);
+                }
+                else if (Std.is(component, UISlider)) {
+                    var uiSlider:UISlider = cast component;
+                    Reflect.setProperty(target, prop, uiSlider.value);
                 }
                 else if (Std.is(component, ComboBox)) {
                     var comboBox:ComboBox = cast component;
                     if (comboBox.selectedItem != null)
-                        target[prop] = comboBox.selectedItem.data;
+                        Reflect.setProperty(target, prop, comboBox.selectedItem.data);
                 }
                 else if (Reflect.hasField(component, "value")) {
-                    target[prop] = Reflect.getProperty(component, "value");
+                    Reflect.setProperty(target, prop, Reflect.getProperty(component, "value"));
                 }
             }
         }

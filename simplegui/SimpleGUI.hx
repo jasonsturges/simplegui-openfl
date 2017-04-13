@@ -216,7 +216,9 @@ class SimpleGUI extends EventDispatcher {
             if(option == "callback")
                 continue;
 
-            Reflect.setProperty(component, option, Reflect.getProperty(options, option));
+            if (Reflect.hasField(component, option) || Reflect.hasField(component, "get_" + option)) {
+                Reflect.setProperty(component, option, Reflect.getProperty(options, option));
+            }
         }
 
         // subscribe to component events
